@@ -6,7 +6,7 @@ This is a demo project, containig both rest and soap web services.
 IDE: IntelliJ IDEA Community 2020 (maven support required).
 JDK: Oracle JDK 13 (might work with Open JDK, not tested yet).
 OS : Windows 10 (might work with Linux distros too, not tested yet).
-TESTING : SoapUI
+TESTING : SoapUI 5.5.0
 DATABASE : H2 (in-memory, no configuration required)
 
 ## Technologies
@@ -26,7 +26,7 @@ DATABASE : H2 (in-memory, no configuration required)
 ## Soap services
 WSDL files were generated from classes using maven plugin Wsdl2Java.
 * http://localhost:8080/axis2/services/EventLoggingServiceSoapController?wsdl -> Description of the Event creation/listing methods.
-* http://localhost:8080/axis2/services/RandomNumbersSoapController -> Description for the random number generator.
+* http://localhost:8080/axis2/services/RandomNumbersSoapController?wsdl -> Description for the random number generator.
 
 
 ## Rest services client
