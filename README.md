@@ -3,11 +3,11 @@ This is a demo project, containig both rest and soap web services.
 
 ## Prerequisites
 
-IDE: IntelliJ IDEA Community 2020 (maven support required).
-JDK: Oracle JDK 13 (might work with Open JDK, not tested yet).
-OS : Windows 10 (might work with Linux distros too, not tested yet).
-TESTING : SoapUI 5.5.0
-DATABASE : H2 (in-memory, no configuration required)
+* IDE: IntelliJ IDEA Community 2020 (maven support required).
+* JDK: Oracle JDK 13 (might work with Open JDK, not tested yet).
+* OS : Windows 10 (might work with Linux distros too, not tested yet).
+* TESTING : SoapUI 5.5.0
+* DATABASE : H2 (in-memory, no configuration required)
 
 ## Technologies
 * Spring Boot (latest, 15.04.2019)
