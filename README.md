@@ -39,6 +39,6 @@ Some service calls can be found in class JUnitTests. Client stubs were generated
 Unit testing was implemented using JUNIT. I order to pass tests, the web app must be started.
 
 ## Exteral testing
-All the methods exposed through SOAP were tested using SoapUI. The soap ui project file ca be downloaded from here.
+All the methods exposed through SOAP and REST were tested externally using SoapUI. The soap ui project file is SoapUI.xml.
 
 
