@@ -1,0 +1,383 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:soapui-project id="17812387-80e1-4edd-b8be-fd4c4567cfa2" activeEnvironment="Default" name="Wrestler" resourceRoot="" soapui-version="5.5.0" abortOnError="false" runType="SEQUENTIAL" xmlns:con="http://eviware.com/soapui/config"><con:settings/><con:interface xsi:type="con:WsdlInterface" id="522ca396-9dbb-4bd2-bd94-eef4d4d7e067" wsaVersion="NONE" name="RandomNumbersSoapControllerSoap12Binding" type="wsdl" bindingName="{http://soap.service.wrestler}RandomNumbersSoapControllerSoap12Binding" soapVersion="1_2" anonymous="optional" definition="http://localhost:8080/axis2/services/RandomNumbersSoapController/description.wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache/><con:endpoints><con:endpoint>http://localhost:8080/axis2/services/RandomNumbersSoapController</con:endpoint></con:endpoints><con:operation id="1d4dad50-dd45-41a3-8c5b-85c0d64a1787" isOneWay="false" action="urn:getRandom" name="getRandom" bindingOperationName="getRandom" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false"><con:settings/></con:operation></con:interface><con:interface xsi:type="con:WsdlInterface" id="2ed57be1-18a2-4e6d-a54a-5e7421295b36" wsaVersion="NONE" name="RandomNumbersSoapControllerSoap11Binding" type="wsdl" bindingName="{http://soap.service.wrestler}RandomNumbersSoapControllerSoap11Binding" soapVersion="1_1" anonymous="optional" definition="http://localhost:8080/axis2/services/RandomNumbersSoapController/description.wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache type="TEXT" rootPart="http://localhost:8080/axis2/services/RandomNumbersSoapController/description.wsdl"><con:part><con:url>http://localhost:8080/axis2/services/RandomNumbersSoapController/description.wsdl</con:url><con:content><![CDATA[<wsdl:definitions targetNamespace="http://soap.service.wrestler" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:ns="http://soap.service.wrestler" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ns1="http://org.apache.axis2/xsd" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl">
+  <wsdl:types>
+    <xs:schema attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://soap.service.wrestler">
+      <xs:element name="getRandom">
+        <xs:complexType>
+          <xs:sequence/>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="getRandomResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="return" type="xs:int"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:schema>
+  </wsdl:types>
+  <wsdl:message name="getRandomRequest">
+    <wsdl:part name="parameters" element="ns:getRandom"/>
+  </wsdl:message>
+  <wsdl:message name="getRandomResponse">
+    <wsdl:part name="parameters" element="ns:getRandomResponse"/>
+  </wsdl:message>
+  <wsdl:portType name="RandomNumbersSoapControllerPortType">
+    <wsdl:operation name="getRandom">
+      <wsdl:input message="ns:getRandomRequest" wsaw:Action="urn:getRandom"/>
+      <wsdl:output message="ns:getRandomResponse" wsaw:Action="urn:getRandomResponse"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="RandomNumbersSoapControllerSoap11Binding" type="ns:RandomNumbersSoapControllerPortType">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+    <wsdl:operation name="getRandom">
+      <soap:operation soapAction="urn:getRandom" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="RandomNumbersSoapControllerSoap12Binding" type="ns:RandomNumbersSoapControllerPortType">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+    <wsdl:operation name="getRandom">
+      <soap12:operation soapAction="urn:getRandom" style="document"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="RandomNumbersSoapControllerHttpBinding" type="ns:RandomNumbersSoapControllerPortType">
+    <http:binding verb="POST"/>
+    <wsdl:operation name="getRandom">
+      <http:operation location="getRandom"/>
+      <wsdl:input>
+        <mime:content type="application/xml" part="parameters"/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content type="application/xml" part="parameters"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="RandomNumbersSoapController">
+    <wsdl:port name="RandomNumbersSoapControllerHttpSoap11Endpoint" binding="ns:RandomNumbersSoapControllerSoap11Binding">
+      <soap:address location="http://localhost:8080/axis2/services/RandomNumbersSoapController"/>
+    </wsdl:port>
+    <wsdl:port name="RandomNumbersSoapControllerHttpSoap12Endpoint" binding="ns:RandomNumbersSoapControllerSoap12Binding">
+      <soap12:address location="http://localhost:8080/axis2/services/RandomNumbersSoapController"/>
+    </wsdl:port>
+    <wsdl:port name="RandomNumbersSoapControllerHttpEndpoint" binding="ns:RandomNumbersSoapControllerHttpBinding">
+      <http:address location="http://localhost:8080/axis2/services/RandomNumbersSoapController"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>]]></con:content><con:type>http://schemas.xmlsoap.org/wsdl/</con:type></con:part></con:definitionCache><con:endpoints><con:endpoint>http://localhost:8080/axis2/services/RandomNumbersSoapController</con:endpoint></con:endpoints><con:operation id="bdf36cfb-7e9b-43a0-a372-da6c0e560e6c" isOneWay="false" action="urn:getRandom" name="getRandom" bindingOperationName="getRandom" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="67072104-8354-4ac4-b91e-2ab91ac6436d" name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/axis2/services/RandomNumbersSoapController</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:soap="http://soap.service.wrestler">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <soap:getRandom/>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="urn:getRandom"/><con:wsrmConfig version="1.2"/></con:call></con:operation></con:interface><con:interface xsi:type="con:RestService" id="61128633-4121-458e-83a7-c88940a5a299" wadlVersion="http://wadl.dev.java.net/2009/02" name="http://localhost:8080" type="rest" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache/><con:endpoints><con:endpoint>http://localhost:8080</con:endpoint></con:endpoints><con:resource name="GetRandom" path="/api/rest/getRandom" id="668ac648-6b1b-423f-ab0b-3b316aa0d5ed"><con:settings/><con:parameters/><con:method name="GetRandom 1" id="8f8ac684-dbac-46f0-8428-6483ca2b49b6" method="GET"><con:settings/><con:parameters/><con:representation type="RESPONSE"><con:mediaType>application/json</con:mediaType><con:status>200</con:status><con:params/></con:representation><con:request name="Request 1" id="00a2de93-abcd-4676-a786-507025ca9971" mediaType="application/json"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:endpoint>http://localhost:8080</con:endpoint><con:request/><con:originalUri>http://localhost/api/rest/getRandom</con:originalUri><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters/></con:request></con:method></con:resource></con:interface><con:interface xsi:type="con:RestService" id="7838b1c8-cdb3-4042-a82f-d861ee82b365" wadlVersion="http://wadl.dev.java.net/2009/02" name="http://localhost:8080" type="rest" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache/><con:endpoints><con:endpoint>http://localhost:8080</con:endpoint></con:endpoints><con:resource name="GetEvents" path="/api/rest/getEvents" id="35013b6a-0353-4cac-9d2a-5109607aa60d"><con:settings/><con:parameters><con:parameter><con:name>count</con:name><con:value>1</con:value><con:style>QUERY</con:style><con:default>1</con:default><con:path xsi:nil="true"/><con:description xsi:nil="true"/></con:parameter><con:parameter><con:name>skip</con:name><con:value/><con:style>QUERY</con:style><con:default/><con:path xsi:nil="true"/><con:description xsi:nil="true"/></con:parameter></con:parameters><con:method name="GetEvents 1" id="072e9185-f6b4-4eea-b46a-5ed63d4a68d1" method="GET"><con:settings/><con:parameters/><con:representation type="RESPONSE"><con:mediaType>application/json</con:mediaType><con:status>200</con:status><con:params/><con:element>Response</con:element></con:representation><con:representation type="RESPONSE"><con:mediaType xsi:nil="true"/><con:status>0</con:status><con:params/><con:element>data</con:element></con:representation><con:request name="Request 1" id="fc42647b-599c-4d44-8fa1-b571fe79d6b7" mediaType="application/json"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:endpoint>http://localhost:8080</con:endpoint><con:request/><con:originalUri>http://localhost/api/rest/getEvents</con:originalUri><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters>
+  <con:entry key="count" value="2"/>
+  <con:entry key="skip" value="2"/>
+</con:parameters><con:parameterOrder><con:entry>count</con:entry><con:entry>skip</con:entry></con:parameterOrder></con:request></con:method></con:resource><con:resource name="CreateInfo" path="/api/rest/createError" id="35013b6a-0353-4cac-9d2a-5109607aa60d"><con:settings/><con:parameters><con:parameter><con:name>description</con:name><con:value>descriptioooon</con:value><con:style>QUERY</con:style><con:default>descriptioooon</con:default><con:path xsi:nil="true"/><con:description xsi:nil="true"/></con:parameter><con:parameter><con:name>user</con:name><con:value>gabi</con:value><con:style>QUERY</con:style><con:default>gabi</con:default><con:path xsi:nil="true"/><con:description xsi:nil="true"/></con:parameter></con:parameters><con:method name="CreateInfo 1" id="072e9185-f6b4-4eea-b46a-5ed63d4a68d1" method="POST"><con:settings/><con:parameters/><con:representation type="RESPONSE"><con:mediaType>application/json</con:mediaType><con:status>200</con:status><con:params/><con:element>Response</con:element></con:representation><con:representation type="RESPONSE"><con:mediaType xsi:nil="true"/><con:status>0</con:status><con:params/><con:element>data</con:element></con:representation><con:representation type="FAULT"><con:mediaType>application/json</con:mediaType><con:status>405 500</con:status><con:params/><con:element xmlns:get="http://localhost/api/rest/getEvents">get:Fault</con:element></con:representation><con:representation type="REQUEST"><con:mediaType>application/json</con:mediaType><con:params/></con:representation><con:request name="Request 1" id="fc42647b-599c-4d44-8fa1-b571fe79d6b7" mediaType="application/json" postQueryString="false"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:endpoint>http://localhost:8080</con:endpoint><con:request/><con:originalUri>http://localhost/api/rest/getEvents</con:originalUri><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters>
+  <con:entry key="description" value="aaa"/>
+  <con:entry key="user" value="bbb"/>
+</con:parameters><con:parameterOrder><con:entry>description</con:entry><con:entry>user</con:entry></con:parameterOrder></con:request></con:method><con:method name="CreateWarn 1" id="072e9185-f6b4-4eea-b46a-5ed63d4a68d1" method="POST"><con:settings/><con:parameters/><con:representation type="RESPONSE"><con:mediaType>application/json</con:mediaType><con:status>200</con:status><con:params/><con:element>Response</con:element></con:representation><con:representation type="RESPONSE"><con:mediaType xsi:nil="true"/><con:status>0</con:status><con:params/><con:element>data</con:element></con:representation><con:representation type="FAULT"><con:mediaType>application/json</con:mediaType><con:status>405 500</con:status><con:params/><con:element xmlns:get="http://localhost/api/rest/getEvents">get:Fault</con:element></con:representation><con:representation type="REQUEST"><con:mediaType>application/json</con:mediaType><con:params/></con:representation><con:representation type="RESPONSE"><con:mediaType xsi:nil="true"/><con:status>0</con:status><con:params/><con:element>data</con:element></con:representation><con:representation type="RESPONSE"><con:mediaType xsi:nil="true"/><con:status>0</con:status><con:params/><con:element>data</con:element></con:representation><con:request name="Request 1" id="fc42647b-599c-4d44-8fa1-b571fe79d6b7" mediaType="application/json" postQueryString="false"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:endpoint>http://localhost:8080</con:endpoint><con:request/><con:originalUri>http://localhost/api/rest/getEvents</con:originalUri><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters>
+  <con:entry key="description" value="aaa"/>
+  <con:entry key="user" value="bbb"/>
+</con:parameters><con:parameterOrder><con:entry>description</con:entry><con:entry>user</con:entry></con:parameterOrder></con:request></con:method><con:method name="CreateError 1" id="072e9185-f6b4-4eea-b46a-5ed63d4a68d1" method="POST"><con:settings/><con:parameters/><con:representation type="RESPONSE"><con:mediaType>application/json</con:mediaType><con:status>200</con:status><con:params/><con:element>Response</con:element></con:representation><con:representation type="RESPONSE"><con:mediaType xsi:nil="true"/><con:status>0</con:status><con:params/><con:element>data</con:element></con:representation><con:representation type="FAULT"><con:mediaType>application/json</con:mediaType><con:status>405 500</con:status><con:params/><con:element xmlns:get="http://localhost/api/rest/getEvents">get:Fault</con:element></con:representation><con:representation type="REQUEST"><con:mediaType>application/json</con:mediaType><con:params/></con:representation><con:representation type="RESPONSE"><con:mediaType xsi:nil="true"/><con:status>0</con:status><con:params/><con:element>data</con:element></con:representation><con:representation type="RESPONSE"><con:mediaType xsi:nil="true"/><con:status>0</con:status><con:params/><con:element>data</con:element></con:representation><con:representation type="RESPONSE"><con:mediaType xsi:nil="true"/><con:status>0</con:status><con:params/><con:element>data</con:element></con:representation><con:request name="Request 1" id="fc42647b-599c-4d44-8fa1-b571fe79d6b7" mediaType="application/json" postQueryString="false"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:endpoint>http://localhost:8080</con:endpoint><con:request/><con:originalUri>http://localhost/api/rest/getEvents</con:originalUri><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters>
+  <con:entry key="description" value="aaa"/>
+  <con:entry key="user" value="bbb"/>
+</con:parameters><con:parameterOrder><con:entry>description</con:entry><con:entry>user</con:entry></con:parameterOrder></con:request></con:method></con:resource></con:interface><con:interface xsi:type="con:WsdlInterface" id="72ba7855-1e58-40b3-958f-7425df98802c" wsaVersion="NONE" name="EventLoggingServiceSoapControllerSoap11Binding" type="wsdl" bindingName="{http://soap.service.wrestler}EventLoggingServiceSoapControllerSoap11Binding" soapVersion="1_1" anonymous="optional" definition="http://localhost:8080/axis2/services/EventLoggingServiceSoapController?wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.actions.iface.tools.axis2.Axis2WSDL2CodeAction@values-local"><![CDATA[<xml-fragment xmlns:con="http://eviware.com/soapui/config">
+  <con:entry key="generate all" value="false"/>
+  <con:entry key="Output Directory" value="C:\Users\Ryzen\Desktop\Clients"/>
+  <con:entry key="service descriptor" value="false"/>
+  <con:entry key="server-side" value="false"/>
+  <con:entry key="JIBX bindingfile" value=""/>
+  <con:entry key="adb writeClasses" value="false"/>
+  <con:entry key="unpack classes" value="false"/>
+  <con:entry key="adb wrapClasses" value="false"/>
+  <con:entry key="namespace mapping" value="&lt;xml-fragment/>"/>
+  <con:entry key="test-case" value="true"/>
+  <con:entry key="serverside-interface" value="false"/>
+  <con:entry key="port name" value="EventLoggingServiceSoapControllerHttpSoap11Endpoint"/>
+  <con:entry key="WSDL" value="http://localhost:8080/axis2/services/EventLoggingServiceSoapController?wsdl"/>
+  <con:entry key="sync" value="true"/>
+  <con:entry key="service name" value="EventLoggingServiceSoapController"/>
+  <con:entry key="async" value="true"/>
+  <con:entry key="Use cached WSDL" value="false"/>
+  <con:entry key="databinding method" value="adb"/>
+  <con:entry key="Package" value="soap.client"/>
+  <con:entry key="Tool Args" value=""/>
+</xml-fragment>]]></con:setting></con:settings><con:definitionCache/><con:endpoints><con:endpoint>http://localhost:8080/services/EventLoggingServiceSoapController.EventLoggingServiceSoapControllerHttpSoap11Endpoint/</con:endpoint></con:endpoints><con:operation id="050b031f-5823-4b71-9de1-c782cabf53d1" isOneWay="false" action="urn:createError" name="createError" bindingOperationName="createError" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="d3f217e2-87ea-45cc-9aa9-6219b7c7e17e" name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/axis2/services/EventLoggingServiceSoapController.EventLoggingServiceSoapControllerHttpSoap11Endpoint/</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:soap="http://soap.service.wrestler">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <soap:createError>\r
+         <!--Optional:-->\r
+         <soap:description>aaa</soap:description>\r
+         <!--Optional:-->\r
+         <soap:user>bbb</soap:user>\r
+      </soap:createError>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="urn:createError"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation id="10c8fc9b-aa51-482b-a35c-66cfdcb14a3e" isOneWay="false" action="urn:createInfo" name="createInfo" bindingOperationName="createInfo" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false"><con:settings/></con:operation><con:operation id="eb116a5c-6bb6-40d9-838e-597f7c8a1667" isOneWay="false" action="urn:createWarn" name="createWarn" bindingOperationName="createWarn" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false"><con:settings/></con:operation><con:operation id="222e8f9b-fd2e-493c-ac5e-70401e0dc37e" isOneWay="false" action="urn:getEvents" name="getEvents" bindingOperationName="getEvents" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false"><con:settings/></con:operation></con:interface><con:interface xsi:type="con:WsdlInterface" id="d0fca8b5-19c0-48ad-9b24-889a429908b1" wsaVersion="NONE" name="EventLoggingServiceSoapControllerSoap12Binding" type="wsdl" bindingName="{http://soap.service.wrestler}EventLoggingServiceSoapControllerSoap12Binding" soapVersion="1_2" anonymous="optional" definition="http://localhost:8080/axis2/services/EventLoggingServiceSoapController?wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache type="TEXT" rootPart="http://localhost:8080/axis2/services/EventLoggingServiceSoapController?wsdl"><con:part><con:url>http://localhost:8080/axis2/services/EventLoggingServiceSoapController?wsdl</con:url><con:content><![CDATA[<wsdl:definitions targetNamespace="http://soap.service.wrestler" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:ns="http://soap.service.wrestler" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:ax22="http://ws.apache.org/namespaces/axis2/enum" xmlns:ax21="http://entities.wrestler/xsd" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ns1="http://org.apache.axis2/xsd" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+  <wsdl:documentation>EventLoggingServiceSoapController</wsdl:documentation>
+  <wsdl:types>
+    <xs:schema attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://ws.apache.org/namespaces/axis2/enum">
+      <xs:simpleType name="wrestler.entities.EventType">
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="Info"/>
+          <xs:enumeration value="Warn"/>
+          <xs:enumeration value="Error"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:schema>
+    <xs:schema attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://entities.wrestler/xsd">
+      <xs:complexType name="Event">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="description" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="0" name="eventType" nillable="true" type="ax22:wrestler.entities.EventType"/>
+          <xs:element minOccurs="0" name="id" nillable="true" type="xs:long"/>
+          <xs:element minOccurs="0" name="user" nillable="true" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+    </xs:schema>
+    <xs:schema attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://soap.service.wrestler" xmlns:ax23="http://ws.apache.org/namespaces/axis2/enum" xmlns:ax24="http://entities.wrestler/xsd">
+      <xs:import namespace="http://ws.apache.org/namespaces/axis2/enum"/>
+      <xs:import namespace="http://entities.wrestler/xsd"/>
+      <xs:element name="getEvents">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="count" type="xs:int"/>
+            <xs:element name="skip" type="xs:int"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="getEventsResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element maxOccurs="unbounded" minOccurs="0" name="return" nillable="true" type="ax24:Event"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="createWarn">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="description" nillable="true" type="xs:string"/>
+            <xs:element minOccurs="0" name="user" nillable="true" type="xs:string"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="createWarnResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="return" type="xs:long"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="createInfo">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="description" nillable="true" type="xs:string"/>
+            <xs:element minOccurs="0" name="user" nillable="true" type="xs:string"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="createInfoResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="return" type="xs:long"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="createError">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="description" nillable="true" type="xs:string"/>
+            <xs:element minOccurs="0" name="user" nillable="true" type="xs:string"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="createErrorResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="return" type="xs:long"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:schema>
+  </wsdl:types>
+  <wsdl:message name="getEventsRequest">
+    <wsdl:part name="parameters" element="ns:getEvents"/>
+  </wsdl:message>
+  <wsdl:message name="getEventsResponse">
+    <wsdl:part name="parameters" element="ns:getEventsResponse"/>
+  </wsdl:message>
+  <wsdl:message name="createErrorRequest">
+    <wsdl:part name="parameters" element="ns:createError"/>
+  </wsdl:message>
+  <wsdl:message name="createErrorResponse">
+    <wsdl:part name="parameters" element="ns:createErrorResponse"/>
+  </wsdl:message>
+  <wsdl:message name="createInfoRequest">
+    <wsdl:part name="parameters" element="ns:createInfo"/>
+  </wsdl:message>
+  <wsdl:message name="createInfoResponse">
+    <wsdl:part name="parameters" element="ns:createInfoResponse"/>
+  </wsdl:message>
+  <wsdl:message name="createWarnRequest">
+    <wsdl:part name="parameters" element="ns:createWarn"/>
+  </wsdl:message>
+  <wsdl:message name="createWarnResponse">
+    <wsdl:part name="parameters" element="ns:createWarnResponse"/>
+  </wsdl:message>
+  <wsdl:portType name="EventLoggingServiceSoapControllerPortType">
+    <wsdl:operation name="getEvents">
+      <wsdl:input message="ns:getEventsRequest" wsaw:Action="urn:getEvents"/>
+      <wsdl:output message="ns:getEventsResponse" wsaw:Action="urn:getEventsResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="createError">
+      <wsdl:input message="ns:createErrorRequest" wsaw:Action="urn:createError"/>
+      <wsdl:output message="ns:createErrorResponse" wsaw:Action="urn:createErrorResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="createInfo">
+      <wsdl:input message="ns:createInfoRequest" wsaw:Action="urn:createInfo"/>
+      <wsdl:output message="ns:createInfoResponse" wsaw:Action="urn:createInfoResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="createWarn">
+      <wsdl:input message="ns:createWarnRequest" wsaw:Action="urn:createWarn"/>
+      <wsdl:output message="ns:createWarnResponse" wsaw:Action="urn:createWarnResponse"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="EventLoggingServiceSoapControllerSoap11Binding" type="ns:EventLoggingServiceSoapControllerPortType">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+    <wsdl:operation name="getEvents">
+      <soap:operation soapAction="urn:getEvents" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="createError">
+      <soap:operation soapAction="urn:createError" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="createInfo">
+      <soap:operation soapAction="urn:createInfo" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="createWarn">
+      <soap:operation soapAction="urn:createWarn" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="EventLoggingServiceSoapControllerSoap12Binding" type="ns:EventLoggingServiceSoapControllerPortType">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+    <wsdl:operation name="getEvents">
+      <soap12:operation soapAction="urn:getEvents" style="document"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="createError">
+      <soap12:operation soapAction="urn:createError" style="document"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="createInfo">
+      <soap12:operation soapAction="urn:createInfo" style="document"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="createWarn">
+      <soap12:operation soapAction="urn:createWarn" style="document"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="EventLoggingServiceSoapControllerHttpBinding" type="ns:EventLoggingServiceSoapControllerPortType">
+    <http:binding verb="POST"/>
+    <wsdl:operation name="getEvents">
+      <http:operation location="getEvents"/>
+      <wsdl:input>
+        <mime:content type="application/xml" part="parameters"/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content type="application/xml" part="parameters"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="createError">
+      <http:operation location="createError"/>
+      <wsdl:input>
+        <mime:content type="application/xml" part="parameters"/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content type="application/xml" part="parameters"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="createInfo">
+      <http:operation location="createInfo"/>
+      <wsdl:input>
+        <mime:content type="application/xml" part="parameters"/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content type="application/xml" part="parameters"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="createWarn">
+      <http:operation location="createWarn"/>
+      <wsdl:input>
+        <mime:content type="application/xml" part="parameters"/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content type="application/xml" part="parameters"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="EventLoggingServiceSoapController">
+    <wsdl:port name="EventLoggingServiceSoapControllerHttpSoap11Endpoint" binding="ns:EventLoggingServiceSoapControllerSoap11Binding">
+      <soap:address location="http://localhost:8080/services/EventLoggingServiceSoapController.EventLoggingServiceSoapControllerHttpSoap11Endpoint/"/>
+    </wsdl:port>
+    <wsdl:port name="EventLoggingServiceSoapControllerHttpSoap12Endpoint" binding="ns:EventLoggingServiceSoapControllerSoap12Binding">
+      <soap12:address location="http://localhost:8080/services/EventLoggingServiceSoapController.EventLoggingServiceSoapControllerHttpSoap12Endpoint/"/>
+    </wsdl:port>
+    <wsdl:port name="EventLoggingServiceSoapControllerHttpEndpoint" binding="ns:EventLoggingServiceSoapControllerHttpBinding">
+      <http:address location="http://localhost:8080/services/EventLoggingServiceSoapController.EventLoggingServiceSoapControllerHttpEndpoint/"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>]]></con:content><con:type>http://schemas.xmlsoap.org/wsdl/</con:type></con:part></con:definitionCache><con:endpoints><con:endpoint>http://localhost:8080/services/EventLoggingServiceSoapController.EventLoggingServiceSoapControllerHttpSoap12Endpoint/</con:endpoint></con:endpoints><con:operation id="9563a2b7-70cf-47c9-bbfe-7ae17548db7e" isOneWay="false" action="urn:createError" name="createError" bindingOperationName="createError" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false"><con:settings/></con:operation><con:operation id="e18d42f6-83e6-46da-b92a-9444b82a4c09" isOneWay="false" action="urn:createInfo" name="createInfo" bindingOperationName="createInfo" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false"><con:settings/></con:operation><con:operation id="01b5cbf2-6980-4780-a357-a4188ddd3217" isOneWay="false" action="urn:createWarn" name="createWarn" bindingOperationName="createWarn" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false"><con:settings/></con:operation><con:operation id="c8055815-400a-467d-a2d4-34be4b01b47b" isOneWay="false" action="urn:getEvents" name="getEvents" bindingOperationName="getEvents" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false"><con:settings/></con:operation></con:interface><con:properties/><con:wssContainer/><con:oAuth2ProfileContainer/><con:oAuth1ProfileContainer/><con:sensitiveInformation/></con:soapui-project>
