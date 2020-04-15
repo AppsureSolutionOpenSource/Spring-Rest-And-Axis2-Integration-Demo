@@ -1,0 +1,257 @@
+<?xml version="1.0" encoding="UTF-8"?><wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:ns="http://soap.service.wrestler" xmlns:ax22="http://ws.apache.org/namespaces/axis2/enum" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ax21="http://entities.wrestler/xsd" xmlns:ns1="http://org.apache.axis2/xsd" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" targetNamespace="http://soap.service.wrestler">
+    <wsdl:types>
+        <xs:schema attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://ws.apache.org/namespaces/axis2/enum">
+            <xs:simpleType name="wrestler.entities.EventType">
+                <xs:restriction base="xs:string">
+                    <xs:enumeration value="Info"/>
+                    <xs:enumeration value="Warn"/>
+                    <xs:enumeration value="Error"/>
+                </xs:restriction>
+            </xs:simpleType>
+        </xs:schema>
+        <xs:schema attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://entities.wrestler/xsd">
+            <xs:complexType name="Event">
+                <xs:sequence>
+                    <xs:element minOccurs="0" name="description" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="eventType" nillable="true" type="ax22:wrestler.entities.EventType"/>
+                    <xs:element minOccurs="0" name="id" nillable="true" type="xs:long"/>
+                    <xs:element minOccurs="0" name="user" nillable="true" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+        </xs:schema>
+        <xs:schema xmlns:ax23="http://ws.apache.org/namespaces/axis2/enum" xmlns:ax24="http://entities.wrestler/xsd" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://soap.service.wrestler">
+            <xs:import namespace="http://ws.apache.org/namespaces/axis2/enum"/>
+            <xs:import namespace="http://entities.wrestler/xsd"/>
+            <xs:element name="getEvents">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="count" type="xs:int"/>
+                        <xs:element name="skip" type="xs:int"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="getEventsResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element maxOccurs="unbounded" minOccurs="0" name="return" nillable="true" type="ax24:Event"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="createWarn">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="description" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="user" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="createWarnResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="return" type="xs:long"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="createInfo">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="description" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="user" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="createInfoResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="return" type="xs:long"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="createError">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="description" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="user" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="createErrorResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="return" type="xs:long"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+        </xs:schema>
+    </wsdl:types>
+    <wsdl:message name="getEventsRequest">
+        <wsdl:part name="parameters" element="ns:getEvents"/>
+    </wsdl:message>
+    <wsdl:message name="getEventsResponse">
+        <wsdl:part name="parameters" element="ns:getEventsResponse"/>
+    </wsdl:message>
+    <wsdl:message name="createErrorRequest">
+        <wsdl:part name="parameters" element="ns:createError"/>
+    </wsdl:message>
+    <wsdl:message name="createErrorResponse">
+        <wsdl:part name="parameters" element="ns:createErrorResponse"/>
+    </wsdl:message>
+    <wsdl:message name="createInfoRequest">
+        <wsdl:part name="parameters" element="ns:createInfo"/>
+    </wsdl:message>
+    <wsdl:message name="createInfoResponse">
+        <wsdl:part name="parameters" element="ns:createInfoResponse"/>
+    </wsdl:message>
+    <wsdl:message name="createWarnRequest">
+        <wsdl:part name="parameters" element="ns:createWarn"/>
+    </wsdl:message>
+    <wsdl:message name="createWarnResponse">
+        <wsdl:part name="parameters" element="ns:createWarnResponse"/>
+    </wsdl:message>
+    <wsdl:portType name="EventLoggingServiceSoapControllerPortType">
+        <wsdl:operation name="getEvents">
+            <wsdl:input message="ns:getEventsRequest" wsaw:Action="urn:getEvents"/>
+            <wsdl:output message="ns:getEventsResponse" wsaw:Action="urn:getEventsResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="createError">
+            <wsdl:input message="ns:createErrorRequest" wsaw:Action="urn:createError"/>
+            <wsdl:output message="ns:createErrorResponse" wsaw:Action="urn:createErrorResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="createInfo">
+            <wsdl:input message="ns:createInfoRequest" wsaw:Action="urn:createInfo"/>
+            <wsdl:output message="ns:createInfoResponse" wsaw:Action="urn:createInfoResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="createWarn">
+            <wsdl:input message="ns:createWarnRequest" wsaw:Action="urn:createWarn"/>
+            <wsdl:output message="ns:createWarnResponse" wsaw:Action="urn:createWarnResponse"/>
+        </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:binding name="EventLoggingServiceSoapControllerSoap11Binding" type="ns:EventLoggingServiceSoapControllerPortType">
+        <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+        <wsdl:operation name="getEvents">
+            <soap:operation soapAction="urn:getEvents" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="createError">
+            <soap:operation soapAction="urn:createError" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="createInfo">
+            <soap:operation soapAction="urn:createInfo" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="createWarn">
+            <soap:operation soapAction="urn:createWarn" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:binding name="EventLoggingServiceSoapControllerSoap12Binding" type="ns:EventLoggingServiceSoapControllerPortType">
+        <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+        <wsdl:operation name="getEvents">
+            <soap12:operation soapAction="urn:getEvents" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="createError">
+            <soap12:operation soapAction="urn:createError" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="createInfo">
+            <soap12:operation soapAction="urn:createInfo" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="createWarn">
+            <soap12:operation soapAction="urn:createWarn" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:binding name="EventLoggingServiceSoapControllerHttpBinding" type="ns:EventLoggingServiceSoapControllerPortType">
+        <http:binding verb="POST"/>
+        <wsdl:operation name="getEvents">
+            <http:operation location="getEvents"/>
+            <wsdl:input>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="createError">
+            <http:operation location="createError"/>
+            <wsdl:input>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="createInfo">
+            <http:operation location="createInfo"/>
+            <wsdl:input>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="createWarn">
+            <http:operation location="createWarn"/>
+            <wsdl:input>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:service name="EventLoggingServiceSoapController">
+        <wsdl:port name="EventLoggingServiceSoapControllerHttpSoap11Endpoint" binding="ns:EventLoggingServiceSoapControllerSoap11Binding">
+            <soap:address location="http://localhost:8080/axis2/services/EventLoggingServiceSoapController"/>
+        </wsdl:port>
+        <wsdl:port name="EventLoggingServiceSoapControllerHttpSoap12Endpoint" binding="ns:EventLoggingServiceSoapControllerSoap12Binding">
+            <soap12:address location="http://localhost:8080/axis2/services/EventLoggingServiceSoapController"/>
+        </wsdl:port>
+        <wsdl:port name="EventLoggingServiceSoapControllerHttpEndpoint" binding="ns:EventLoggingServiceSoapControllerHttpBinding">
+            <http:address location="http://localhost:8080/axis2/services/EventLoggingServiceSoapController"/>
+        </wsdl:port>
+    </wsdl:service>
+</wsdl:definitions>

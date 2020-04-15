@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?><wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:ns="http://soap.service.wrestler" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ns1="http://org.apache.axis2/xsd" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" targetNamespace="http://soap.service.wrestler">
+    <wsdl:types>
+        <xs:schema attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://soap.service.wrestler">
+            <xs:element name="getRandom">
+                <xs:complexType>
+                    <xs:sequence/>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="getRandomResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="return" type="xs:int"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+        </xs:schema>
+    </wsdl:types>
+    <wsdl:message name="getRandomRequest">
+        <wsdl:part name="parameters" element="ns:getRandom"/>
+    </wsdl:message>
+    <wsdl:message name="getRandomResponse">
+        <wsdl:part name="parameters" element="ns:getRandomResponse"/>
+    </wsdl:message>
+    <wsdl:portType name="RandomNumbersSoapControllerPortType">
+        <wsdl:operation name="getRandom">
+            <wsdl:input message="ns:getRandomRequest" wsaw:Action="urn:getRandom"/>
+            <wsdl:output message="ns:getRandomResponse" wsaw:Action="urn:getRandomResponse"/>
+        </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:binding name="RandomNumbersSoapControllerSoap11Binding" type="ns:RandomNumbersSoapControllerPortType">
+        <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+        <wsdl:operation name="getRandom">
+            <soap:operation soapAction="urn:getRandom" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:binding name="RandomNumbersSoapControllerSoap12Binding" type="ns:RandomNumbersSoapControllerPortType">
+        <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+        <wsdl:operation name="getRandom">
+            <soap12:operation soapAction="urn:getRandom" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:binding name="RandomNumbersSoapControllerHttpBinding" type="ns:RandomNumbersSoapControllerPortType">
+        <http:binding verb="POST"/>
+        <wsdl:operation name="getRandom">
+            <http:operation location="getRandom"/>
+            <wsdl:input>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:service name="RandomNumbersSoapController">
+        <wsdl:port name="RandomNumbersSoapControllerHttpSoap11Endpoint" binding="ns:RandomNumbersSoapControllerSoap11Binding">
+            <soap:address location="http://localhost:8080/axis2/services/RandomNumbersSoapController"/>
+        </wsdl:port>
+        <wsdl:port name="RandomNumbersSoapControllerHttpSoap12Endpoint" binding="ns:RandomNumbersSoapControllerSoap12Binding">
+            <soap12:address location="http://localhost:8080/axis2/services/RandomNumbersSoapController"/>
+        </wsdl:port>
+        <wsdl:port name="RandomNumbersSoapControllerHttpEndpoint" binding="ns:RandomNumbersSoapControllerHttpBinding">
+            <http:address location="http://localhost:8080/axis2/services/RandomNumbersSoapController"/>
+        </wsdl:port>
+    </wsdl:service>
+</wsdl:definitions>
